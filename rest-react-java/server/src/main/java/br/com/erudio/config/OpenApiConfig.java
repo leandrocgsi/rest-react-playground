@@ -9,15 +9,21 @@ import io.swagger.v3.oas.models.info.License;
 
 @Configuration
 public class OpenApiConfig {
-
+	
 	@Bean
-	public OpenAPI customOpenApi() {
+	public OpenAPI customOpenAPI() {
 		return new OpenAPI()
-		        .info(new Info()
-		                .title("RESTful API With Java 16 and Spring Boot 2.6")
-		                .version("v1")
-		                .description("Some description about your API.")
-		                .termsOfService("https://pub.erudio.com.br/meus-cursos")
-		                .license(new License().name("Apache 2.0").url("https://pub.erudio.com.br/meus-cursos")));
+			.info(new Info()
+				.title("REST API's RESTful from Zero to AWS with Java 21, Spring Boot 3.2.0 and Docker")
+				.version("v1")
+				.description("Some description about your API")
+				.termsOfService("https://pub.erudio.com.br/meus-cursos")
+				.license(
+					new License()
+						.name("Apache 2.0")
+						.url("https://pub.erudio.com.br/meus-cursos")
+					)
+				);
 	}
+
 }
