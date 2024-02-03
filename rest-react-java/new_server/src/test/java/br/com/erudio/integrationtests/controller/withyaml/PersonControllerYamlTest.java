@@ -73,7 +73,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 							.extract()
 							.body()
 								.as(TokenVO.class, objectMapper)
-							.getAccessToken();
+							.getToken();
 		
 		specification = new RequestSpecBuilder()
 				.addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + accessToken)
@@ -292,7 +292,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 									ContentType.TEXT)))
 				.contentType(TestConfigs.CONTENT_TYPE_YML)
 				.accept(TestConfigs.CONTENT_TYPE_YML)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 					.when()
 					.get()
 				.then()
@@ -354,7 +354,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 				.contentType(TestConfigs.CONTENT_TYPE_YML)
 				.accept(TestConfigs.CONTENT_TYPE_YML)
 					.pathParam("firstName", "ayr")
-					.queryParams("page", 0, "size", 6, "direction", "asc")
+					.queryParams("page", 0, "limit", 6, "direction", "asc")
 						.when()
 						.get("findPersonByName/{firstName}")
 					.then()
@@ -425,7 +425,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 									ContentType.TEXT)))
 				.contentType(TestConfigs.CONTENT_TYPE_YML)
 				.accept(TestConfigs.CONTENT_TYPE_YML)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 				.when()
 					.get()
 				.then()
@@ -440,11 +440,11 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 		assertTrue(content.contains("rel: \"self\"    href: \"http://localhost:8888/api/person/v1/846\""));
 		assertTrue(content.contains("rel: \"self\"    href: \"http://localhost:8888/api/person/v1/714\""));
 		
-		assertTrue(content.contains("rel: \"first\"  href: \"http://localhost:8888/api/person/v1?direction=asc&page=0&size=10&sort=firstName,asc\""));
-		assertTrue(content.contains("rel: \"prev\"  href: \"http://localhost:8888/api/person/v1?direction=asc&page=2&size=10&sort=firstName,asc\""));
-		assertTrue(content.contains("rel: \"self\"  href: \"http://localhost:8888/api/person/v1?page=3&size=10&direction=asc\""));
-		assertTrue(content.contains("rel: \"next\"  href: \"http://localhost:8888/api/person/v1?direction=asc&page=4&size=10&sort=firstName,asc\""));
-		assertTrue(content.contains("rel: \"last\"  href: \"http://localhost:8888/api/person/v1?direction=asc&page=100&size=10&sort=firstName,asc\""));
+		assertTrue(content.contains("rel: \"first\"  href: \"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=0&size=10&sort=firstName,asc\""));
+		assertTrue(content.contains("rel: \"prev\"  href: \"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=2&size=10&sort=firstName,asc\""));
+		assertTrue(content.contains("rel: \"self\"  href: \"http://localhost:8888/api/person/v1?page=3&limit=10&direction=asc\""));
+		assertTrue(content.contains("rel: \"next\"  href: \"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=4&size=10&sort=firstName,asc\""));
+		assertTrue(content.contains("rel: \"last\"  href: \"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=100&size=10&sort=firstName,asc\""));
 		
 		assertTrue(content.contains("page:  size: 10  totalElements: 1007  totalPages: 101  number: 3"));
 	}

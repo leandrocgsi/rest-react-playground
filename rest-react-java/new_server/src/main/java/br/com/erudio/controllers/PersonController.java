@@ -58,14 +58,14 @@ public class PersonController {
 	)
 	public ResponseEntity<PagedModel<EntityModel<PersonVO>>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "size", defaultValue = "12") Integer size,
+			@RequestParam(value = "limit", defaultValue = "12") Integer limit,
 			@RequestParam(value = "direction", defaultValue = "asc") String direction
 			) {
 		
 		var sortDirection = "desc".equalsIgnoreCase(direction)
 				? Direction.DESC : Direction.ASC;
 			
-		Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "firstName"));
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"));
 		return ResponseEntity.ok(service.findAll(pageable));
 	}
 		
@@ -90,14 +90,14 @@ public class PersonController {
 	public ResponseEntity<PagedModel<EntityModel<PersonVO>>> findPersonByName(
 			@PathVariable(value = "firstName") String firstName,
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "size", defaultValue = "12") Integer size,
+			@RequestParam(value = "limit", defaultValue = "12") Integer limit,
 			@RequestParam(value = "direction", defaultValue = "asc") String direction
 			) {
 		
 		var sortDirection = "desc".equalsIgnoreCase(direction)
 				? Direction.DESC : Direction.ASC;
 		
-		Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "firstName"));
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"));
 		return ResponseEntity.ok(service.findPersonByName(firstName, pageable));
 	}
 	

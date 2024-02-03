@@ -69,7 +69,7 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
                     .extract()
                     .body()
                         .as(TokenVO.class)
-                    .getAccessToken();
+                    .getToken();
 
             specification =
                 new RequestSpecBuilder()
@@ -225,7 +225,7 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 		
 		var content = given().spec(specification)
                 .contentType(TestConfigs.CONTENT_TYPE_JSON)
-            	.queryParams("page", 0 , "size", 12, "direction", "asc")
+            	.queryParams("page", 0 , "limit", 12, "direction", "asc")
                     .when()
                     .get()
                 .then()
@@ -238,12 +238,12 @@ public class BookControllerJsonTest extends AbstractIntegrationTest {
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/book/v1/5\"}}}"));
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/book/v1/7\"}}}"));
 		
-		assertTrue(content.contains("{\"first\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=0&size=12&sort=title,asc\"}"));
-		assertTrue(content.contains("\"self\":{\"href\":\"http://localhost:8888/api/book/v1?page=0&size=12&direction=asc\"}"));
-		assertTrue(content.contains("\"next\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=1&size=12&sort=title,asc\"}"));
-		assertTrue(content.contains("\"last\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=1&size=12&sort=title,asc\"}}"));
+		assertTrue(content.contains("{\"first\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=0&limit=12&sort=title,asc\"}"));
+		assertTrue(content.contains("\"self\":{\"href\":\"http://localhost:8888/api/book/v1?page=0&limit=12&direction=asc\"}"));
+		assertTrue(content.contains("\"next\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=1&limit=12&sort=title,asc\"}"));
+		assertTrue(content.contains("\"last\":{\"href\":\"http://localhost:8888/api/book/v1?direction=asc&page=1&limit=12&sort=title,asc\"}}"));
 		
-		assertTrue(content.contains("\"page\":{\"size\":12,\"totalElements\":15,\"totalPages\":2,\"number\":0}}"));
+		assertTrue(content.contains("\"page\":{\"limit\":12,\"totalElements\":15,\"totalPages\":2,\"number\":0}}"));
     }
      
     private void mockBook() {

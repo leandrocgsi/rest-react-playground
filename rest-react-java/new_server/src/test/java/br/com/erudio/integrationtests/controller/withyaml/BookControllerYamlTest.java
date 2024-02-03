@@ -76,7 +76,7 @@ public class BookControllerYamlTest extends AbstractIntegrationTest {
                     .extract()
                     .body()
                         .as(TokenVO.class, objectMapper)
-                    .getAccessToken();
+                    .getToken();
 
             specification =
                 new RequestSpecBuilder()
@@ -266,7 +266,7 @@ public class BookControllerYamlTest extends AbstractIntegrationTest {
                     .spec(specification)
                 .contentType(TestConfigs.CONTENT_TYPE_YML)
 				.accept(TestConfigs.CONTENT_TYPE_YML)
-            	.queryParams("page", 0 , "size", 12, "direction", "asc")
+            	.queryParams("page", 0 , "limit", 12, "direction", "asc")
                     .when()
                     .get()
                 .then()
@@ -281,12 +281,12 @@ public class BookControllerYamlTest extends AbstractIntegrationTest {
 		assertTrue(content.contains("rel: \"self\"    href: \"http://localhost:8888/api/book/v1/5\""));
 		assertTrue(content.contains("rel: \"self\"    href: \"http://localhost:8888/api/book/v1/7\""));
 		
-		assertTrue(content.contains("rel: \"first\"  href: \"http://localhost:8888/api/book/v1?direction=asc&page=0&size=12&sort=title,asc\""));
-		assertTrue(content.contains("rel: \"self\"  href: \"http://localhost:8888/api/book/v1?page=0&size=12&direction=asc\""));
-		assertTrue(content.contains("rel: \"next\"  href: \"http://localhost:8888/api/book/v1?direction=asc&page=1&size=12&sort=title,asc\""));
-		assertTrue(content.contains("rel: \"last\"  href: \"http://localhost:8888/api/book/v1?direction=asc&page=1&size=12&sort=title,asc\""));
+		assertTrue(content.contains("rel: \"first\"  href: \"http://localhost:8888/api/book/v1?limit=12&direction=asc&page=0&size=12&sort=title,asc\""));
+		assertTrue(content.contains("rel: \"self\"  href: \"http://localhost:8888/api/book/v1?page=0&limit=12&direction=asc\""));
+		assertTrue(content.contains("rel: \"next\"  href: \"http://localhost:8888/api/book/v1?limit=12&direction=asc&page=1&size=12&sort=title,asc\""));
+		assertTrue(content.contains("rel: \"last\"  href: \"http://localhost:8888/api/book/v1?limit=12&direction=asc&page=1&size=12&sort=title,asc\""));
 		
-		assertTrue(content.contains("page:  size: 12  totalElements: 15  totalPages: 2  number: 0"));
+		assertTrue(content.contains("size: 12  totalElements: 15  totalPages: 2  number: 0"));
     }
      
     private void mockBook() {

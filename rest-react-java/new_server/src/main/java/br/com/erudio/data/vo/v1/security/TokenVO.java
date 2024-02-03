@@ -11,7 +11,7 @@ public class TokenVO implements Serializable{
 	private Boolean authenticated;
 	private Date created;
 	private Date expiration;
-	private String accessToken;
+	private String token;
 	private String refreshToken;
 	
 	public TokenVO() {}
@@ -21,13 +21,13 @@ public class TokenVO implements Serializable{
 			Boolean authenticated,
 			Date created,
 			Date expiration,
-			String accessToken,
+			String token,
 			String refreshToken) {
 		this.username = username;
 		this.authenticated = authenticated;
 		this.created = created;
 		this.expiration = expiration;
-		this.accessToken = accessToken;
+		this.token = token;
 		this.refreshToken = refreshToken;
 	}
 
@@ -63,12 +63,12 @@ public class TokenVO implements Serializable{
 		this.expiration = expiration;
 	}
 
-	public String getAccessToken() {
-		return accessToken;
+	public String getToken() {
+		return token;
 	}
 
-	public void setAccessToken(String accessToken) {
-		this.accessToken = accessToken;
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public String getRefreshToken() {
@@ -83,7 +83,7 @@ public class TokenVO implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((accessToken == null) ? 0 : accessToken.hashCode());
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
 		result = prime * result + ((authenticated == null) ? 0 : authenticated.hashCode());
 		result = prime * result + ((created == null) ? 0 : created.hashCode());
 		result = prime * result + ((expiration == null) ? 0 : expiration.hashCode());
@@ -101,10 +101,10 @@ public class TokenVO implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		TokenVO other = (TokenVO) obj;
-		if (accessToken == null) {
-			if (other.accessToken != null)
+		if (token == null) {
+			if (other.token != null)
 				return false;
-		} else if (!accessToken.equals(other.accessToken))
+		} else if (!token.equals(other.token))
 			return false;
 		if (authenticated == null) {
 			if (other.authenticated != null)

@@ -66,7 +66,7 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 							.extract()
 							.body()
 								.as(TokenVO.class)
-							.getAccessToken();
+							.getToken();
 		
 		specification = new RequestSpecBuilder()
 				.addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + accessToken)
@@ -249,7 +249,7 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_XML)
 				.accept(TestConfigs.CONTENT_TYPE_XML)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 					.when()
 					.get()
 				.then()
@@ -304,7 +304,7 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 				.contentType(TestConfigs.CONTENT_TYPE_XML)
 				.accept(TestConfigs.CONTENT_TYPE_XML)
 				.pathParam("firstName", "ayr")
-				.queryParams("page", 0, "size", 6, "direction", "asc")
+				.queryParams("page", 0, "limit", 6, "direction", "asc")
 					.when()
 					.get("findPersonByName/{firstName}")
 				.then()
@@ -361,7 +361,7 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_XML)
 				.accept(TestConfigs.CONTENT_TYPE_XML)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 				.when()
 					.get()
 				.then()
@@ -374,12 +374,12 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/846</href></links>"));
 		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/714</href></links>"));
 		
-		assertTrue(content.contains("<links><rel>first</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=0&amp;size=10&amp;sort=firstName,asc</href></links>"));
-		assertTrue(content.contains("<links><rel>prev</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=2&amp;size=10&amp;sort=firstName,asc</href></links>"));
-		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1?page=3&amp;size=10&amp;direction=asc</href></links>"));
-		assertTrue(content.contains("<links><rel>next</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=4&amp;size=10&amp;sort=firstName,asc</href></links>"));
-		assertTrue(content.contains("<links><rel>last</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=100&amp;size=10&amp;sort=firstName,asc</href></links>"));
-		assertTrue(content.contains("<page><size>10</size><totalElements>1007</totalElements><totalPages>101</totalPages><number>3</number></page>"));
+		assertTrue(content.contains("<links><rel>first</rel><href>http://localhost:8888/api/person/v1?limit=10&direction=asc&page=0&size=10&sort=firstName,asc</href></links>"));
+		assertTrue(content.contains("<links><rel>prev</rel><href>http://localhost:8888/api/person/v1?limit=10&direction=asc&page=2&size=10&sort=firstName,asc</href></links>"));
+		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1?page=3&limit=10&direction=asc</href></links>"));
+		assertTrue(content.contains("<links><rel>next</rel><href>http://localhost:8888/api/person/v1?limit=10&direction=asc&page=4&size=10&sort=firstName,asc</href></links>"));
+		assertTrue(content.contains("<links><rel>last</rel><href>http://localhost:8888/api/person/v1?limit=10&direction=asc&page=100&size=10&sort=firstName,asc</href></links>"));
+		assertTrue(content.contains("<page><limit>10</limit><totalElements>1007</totalElements><totalPages>101</totalPages><number>3</number></page>"));
 	}
 	
 	private void mockPerson() {

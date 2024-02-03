@@ -65,7 +65,7 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 							.extract()
 							.body()
 								.as(TokenVO.class)
-							.getAccessToken();
+							.getToken();
 		
 		specification = new RequestSpecBuilder()
 				.addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + accessToken)
@@ -239,7 +239,7 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
 				.accept(TestConfigs.CONTENT_TYPE_JSON)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 					.when()
 					.get()
 				.then()
@@ -294,7 +294,7 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
 				.accept(TestConfigs.CONTENT_TYPE_JSON)
 				.pathParam("firstName", "ayr")
-				.queryParams("page", 0, "size", 6, "direction", "asc")
+				.queryParams("page", 0, "limit", 6, "direction", "asc")
 					.when()
 					.get("findPersonByName/{firstName}")
 				.then()
@@ -350,7 +350,7 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 		var content = given().spec(specification)
 				.contentType(TestConfigs.CONTENT_TYPE_JSON)
 				.accept(TestConfigs.CONTENT_TYPE_JSON)
-				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.queryParams("page", 3, "limit", 10, "direction", "asc")
 					.when()
 					.get()
 				.then()
@@ -363,11 +363,11 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/person/v1/846\"}}}"));
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/person/v1/714\"}}}"));
 		
-		assertTrue(content.contains("{\"first\":{\"href\":\"http://localhost:8888/api/person/v1?direction=asc&page=0&size=10&sort=firstName,asc\"}"));
-		assertTrue(content.contains("\"prev\":{\"href\":\"http://localhost:8888/api/person/v1?direction=asc&page=2&size=10&sort=firstName,asc\"}"));
-		assertTrue(content.contains("\"self\":{\"href\":\"http://localhost:8888/api/person/v1?page=3&size=10&direction=asc\"}"));
-		assertTrue(content.contains("\"next\":{\"href\":\"http://localhost:8888/api/person/v1?direction=asc&page=4&size=10&sort=firstName,asc\"}"));
-		assertTrue(content.contains("\"last\":{\"href\":\"http://localhost:8888/api/person/v1?direction=asc&page=100&size=10&sort=firstName,asc\"}}"));
+		assertTrue(content.contains("{\"first\":{\"href\":\"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=0&size=10&sort=firstName,asc\"}"));
+		assertTrue(content.contains("\"prev\":{\"href\":\"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=2&size=10&sort=firstName,asc\"}"));
+		assertTrue(content.contains("\"self\":{\"href\":\"http://localhost:8888/api/person/v1?page=3&limit=10&direction=asc\"}"));
+		assertTrue(content.contains("\"next\":{\"href\":\"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=4&size=10&sort=firstName,asc\"}"));
+		assertTrue(content.contains("\"last\":{\"href\":\"http://localhost:8888/api/person/v1?limit=10&direction=asc&page=100&size=10&sort=firstName,asc\"}}"));
 		
 		assertTrue(content.contains("\"page\":{\"size\":10,\"totalElements\":1007,\"totalPages\":101,\"number\":3}}"));
 	}

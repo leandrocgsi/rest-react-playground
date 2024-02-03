@@ -43,7 +43,7 @@ public class AuthControllerXmlTest extends AbstractIntegrationTest {
 							.body()
 								.as(TokenVO.class);
 		
-		assertNotNull(tokenVO.getAccessToken());
+		assertNotNull(tokenVO.getToken());
 		assertNotNull(tokenVO.getRefreshToken());
 	}
 	
@@ -65,7 +65,7 @@ public class AuthControllerXmlTest extends AbstractIntegrationTest {
 					.body()
 						.as(TokenVO.class);
 		
-		assertNotNull(newTokenVO.getAccessToken());
+		assertNotNull(newTokenVO.getToken());
 		assertNotNull(newTokenVO.getRefreshToken());
 	}
 }
