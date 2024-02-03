@@ -36,4 +36,4 @@ jobs:
          docker tag rest-react-java-server:latest ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:${{ github.run_id }}
          
          docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:latest
-         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:${{ github.run_id }}
+         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:${{github.run_id}}
