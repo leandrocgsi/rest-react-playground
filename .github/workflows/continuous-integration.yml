@@ -24,7 +24,7 @@ jobs:
          cache: maven
      - name: Build Application Jar
        working-directory: ./rest-react-java/server
-       run: mvn clean package -DskipTests
+       run: mvn clean package
        
      - name: Docker Compose Build
        working-directory: ./rest-react-java
