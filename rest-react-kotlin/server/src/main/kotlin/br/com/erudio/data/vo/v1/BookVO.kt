@@ -9,7 +9,7 @@ import org.springframework.hateoas.server.core.Relation
 import java.util.*
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Relation(collectionRelation = "bookVoes", itemRelation = "book")
+@Relation(collectionRelation = "bookVOes", itemRelation = "book")
 @JsonPropertyOrder("id", "author", "launchDate", "price", "title")
 data class BookVO (
 
