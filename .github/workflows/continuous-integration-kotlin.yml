@@ -1,4 +1,4 @@
-name: Java Continuous Integration with GitHub, GitHub Actions and Docker Hub
+name: Kotlin Continuous Integration with GitHub, GitHub Actions and Docker Hub
 
 on:
   push:
@@ -23,17 +23,17 @@ jobs:
          distribution: 'adopt'
          cache: maven
      - name: Build Application Jar
-       working-directory: ./rest-react-java/server
+       working-directory: ./rest-react-kotlin/server
        run: mvn clean package
        
      - name: Docker Compose Build
-       working-directory: ./rest-react-java
+       working-directory: ./rest-react-kotlin
        run: docker compose build
 
      - name: Push to Docker Hub Container Registry
        run: |
-         docker tag rest-react-java-server:latest ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:latest
-         docker tag rest-react-java-server:latest ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:${{github.run_id}}
+         docker tag rest-react-kotlin-server:latest ${{ secrets.DOCKER_USERNAME }}/rest-react-kotlin-server:latest
+         docker tag rest-react-kotlin-server:latest ${{ secrets.DOCKER_USERNAME }}/rest-react-kotlin-server:${{github.run_id}}
          
-         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:latest
-         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-java-server:${{github.run_id}}
+         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-kotlin-server:latest
+         docker push ${{ secrets.DOCKER_USERNAME }}/rest-react-kotlin-server:${{github.run_id}}

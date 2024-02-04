@@ -5,7 +5,7 @@
 ![Stars](https://img.shields.io/github/stars/leandrocgsi/rest-react-playground)
 [![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZJ4NQJXEKQ63A)
 [![Docker Hub Repo](https://img.shields.io/docker/pulls/leandrocgsi/docker-from-zero-to-mastery-dotnet.svg)](https://hub.docker.com/repository/docker/leandrocgsi/docker-from-zero-to-mastery-dotnet)
-[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml)
+[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml)[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml)
 ![Last Commit](https://img.shields.io/github/last-commit/leandrocgsi/rest-react-playground)
 [![GitHub repo](https://img.shields.io/badge/GitHub-Repository-green.svg)](https://github.com/leandrocgsi/rest-react-playground)
 
