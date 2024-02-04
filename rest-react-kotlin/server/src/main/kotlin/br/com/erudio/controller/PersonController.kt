@@ -57,12 +57,12 @@ class PersonController {
         ]
     )
     fun findAll(@RequestParam(value = "page", defaultValue = "0") page: Int,
-                @RequestParam(value = "size", defaultValue = "12") size: Int,
+                @RequestParam(value = "limit", defaultValue = "12") limit: Int,
                 @RequestParam(value = "direction", defaultValue = "asc") direction: String
     ): ResponseEntity<PagedModel<EntityModel<PersonVO>>> {
         val sortDirection: Sort.Direction =
             if("desc".equals(direction, ignoreCase = true)) Sort.Direction.DESC else Sort.Direction.ASC
-        val pageable: Pageable = PageRequest.of(page, size, Sort.by(sortDirection, "firstName"))
+        val pageable: Pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"))
         return ResponseEntity.ok(service.findAll(pageable))
     }
 
@@ -97,12 +97,12 @@ class PersonController {
     fun findPersonByName(
                 @PathVariable(value = "firstName") firstName: String,
                 @RequestParam(value = "page", defaultValue = "0") page: Int,
-                @RequestParam(value = "size", defaultValue = "12") size: Int,
+                @RequestParam(value = "limit", defaultValue = "12") limit: Int,
                 @RequestParam(value = "direction", defaultValue = "asc") direction: String
     ): ResponseEntity<PagedModel<EntityModel<PersonVO>>> {
         val sortDirection: Sort.Direction =
             if("desc".equals(direction, ignoreCase = true)) Sort.Direction.DESC else Sort.Direction.ASC
-        val pageable: Pageable = PageRequest.of(page, size, Sort.by(sortDirection, "firstName"))
+        val pageable: Pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "firstName"))
         return ResponseEntity.ok(service.findPersonByName(firstName, pageable))
     }
 
