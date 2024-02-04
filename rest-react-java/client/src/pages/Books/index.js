@@ -57,7 +57,7 @@ export default function Books(){
         });
 
         setBooks([ ...books, ...response.data._embedded.bookVoes])
-        // setBooks([ ...books, ...response.data._embedded.bookVOList])
+
         setPage(page + 1);
     }
 
