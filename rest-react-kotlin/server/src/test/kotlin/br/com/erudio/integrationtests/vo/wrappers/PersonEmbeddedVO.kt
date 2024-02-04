@@ -5,6 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 class PersonEmbeddedVO {
 
-    @JsonProperty("personVOList")
+    @JsonProperty("personVoes")
     var persons: List<PersonVO>? = null
 }

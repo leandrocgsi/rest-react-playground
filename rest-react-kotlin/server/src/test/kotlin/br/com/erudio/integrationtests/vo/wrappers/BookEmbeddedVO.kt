@@ -5,6 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 class BookEmbeddedVO {
 
-    @JsonProperty("bookVOList")
+    @JsonProperty("bookVoes")
     var books: List<BookVO>? = null
 }

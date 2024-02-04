@@ -389,7 +389,7 @@ class PersonControllerYmlTest : AbstractIntegrationTest() {
             .statusCode(200)
             .extract()
             .body()
-            .asString()
+            .asString().replace(Regex("[\\r\\n\\s]+"), "")
 
         assertTrue(content.contains("""_links":{"self":{"href":"http://localhost:8888/api/person/v1/199"}}}"""))
         assertTrue(content.contains("""_links":{"self":{"href":"http://localhost:8888/api/person/v1/797"}}}"""))

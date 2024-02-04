@@ -221,7 +221,7 @@ class  BookControllerJsonTest : AbstractIntegrationTest() {
             .statusCode(200)
             .extract()
             .body()
-            .asString()
+            .asString().replace(Regex("[\\r\\n\\s]+"), "")
 
         assertTrue(content.contains(""""_links":{"self":{"href":"http://localhost:8888/api/book/v1/12"}}}"""))
         assertTrue(content.contains(""""_links":{"self":{"href":"http://localhost:8888/api/book/v1/3"}}}"""))

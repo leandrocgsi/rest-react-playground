@@ -1,11 +1,15 @@
 package br.com.erudio.data.vo.v1
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.github.dozermapper.core.Mapping
 import org.springframework.hateoas.RepresentationModel
+import org.springframework.hateoas.server.core.Relation
 import java.util.*
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Relation(collectionRelation = "bookVoes", itemRelation = "book")
 @JsonPropertyOrder("id", "author", "launchDate", "price", "title")
 data class BookVO (
 
