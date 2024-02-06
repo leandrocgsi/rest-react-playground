@@ -64,9 +64,28 @@ builder.Services.AddAuthorization(auth =>
         .RequireAuthenticatedUser().Build());
 });
 
-builder.Services.AddCors();
+/**
+https://geeksarray.com/blog/how-to-setup-cors-policies-in-aspnet-core-web-api
+https://learn.microsoft.com/en-us/answers/questions/1117500/xmlhttprequest-block-by-cors-no-access-control-all
+https://stackoverflow.com/questions/44379560/how-to-enable-cors-in-asp-net-core-webapi
+https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-8.0
+https://learn.microsoft.com/en-us/answers/questions/1186690/access-to-xmlhttprequest-has-been-blocked-by-cors
+*/
 
-builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+// https://stackoverflow.com/questions/72980204/asp-net-core-6-0-web-api-error-status-400-title-one-or-more-validation-errors
+builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
@@ -133,11 +152,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 
-app.UseCors(x => x
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader());
+//app.UseCors(MyAllowSpecificOrigins);
+app.UseCors();
 
 app.UseSwagger();
 
