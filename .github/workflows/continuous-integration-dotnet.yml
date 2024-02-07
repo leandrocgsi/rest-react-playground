@@ -17,7 +17,7 @@ jobs:
          password: ${{ secrets.DOCKER_PASSWORD }}
 
      - name: Docker Compose Build
-       working-directory: ./rest-react-dotnet/server/RestWithASPNETErudio
+       working-directory: ./rest-react-dotnet/server/02-AfterDockerization/RestWithASPNETErudio
        run: docker compose build
 
      - name: Push to Docker Hub Container Registry
