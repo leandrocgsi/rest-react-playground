@@ -1,4 +1,4 @@
-name: Continuous Integration with GitHub, GitHub Actions and Docker Hub
+name: .NET 8 Continuous Integration with GitHub, GitHub Actions and Docker Hub
 
 on:
   push:

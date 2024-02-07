@@ -4,10 +4,14 @@
 ![Forks](https://img.shields.io/github/forks/leandrocgsi/rest-react-playground)
 ![Stars](https://img.shields.io/github/stars/leandrocgsi/rest-react-playground)
 [![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=ZJ4NQJXEKQ63A)
-[![Docker Hub Repo](https://img.shields.io/docker/pulls/leandrocgsi/docker-from-zero-to-mastery-dotnet.svg)](https://hub.docker.com/repository/docker/leandrocgsi/docker-from-zero-to-mastery-dotnet)
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/leandrocgsi/rest-react-kotlin-server.svg)](https://hub.docker.com/repository/docker/leandrocgsi/rest-react-kotlin-server)
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/leandrocgsi/rest-react-java-server.svg)](https://hub.docker.com/repository/docker/leandrocgsi/rest-react-java-server)
+[![Docker Hub Repo](https://img.shields.io/docker/pulls/leandrocgsi/rest-react-dotnet-server.svg)](https://hub.docker.com/repository/docker/leandrocgsi/rest-react-dotnet-server)
 ![Last Commit](https://img.shields.io/github/last-commit/leandrocgsi/rest-react-playground)
 [![GitHub repo](https://img.shields.io/badge/GitHub-Repository-green.svg)](https://github.com/leandrocgsi/rest-react-playground)
-[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml)[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml)
+[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-java.yml)
+[![Continuous Integration with Github Actions](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-kotlin.yml)
+[![Continuous Integration with GitHub, GitHub Actions and Docker Hub](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-dotnet.yml/badge.svg)](https://github.com/leandrocgsi/rest-react-playground/actions/workflows/continuous-integration-dotnet.yml)
 
 [![Image](https://raw.githubusercontent.com/leandrocgsi/RestWithSpringBootUdemy/master/Images/react_java.png "React JS consumindo REST API RESTful em Spring Boot Java 16")](https://www.udemy.com/course/aprenda-consumir-apis-restful-em-spring-boot-java-com-react-js-axios/?couponCode=GTHB_FLASH_SALE2021)
 
